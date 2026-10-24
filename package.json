@@ -1,0 +1,8 @@
+{
+  "name": "dessert-recipes-motion",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A vanilla HTML, CSS and JavaScript recreation of the supplied dessert recipe motion reference.",
+  "scripts": {"check": "node --check dist/app.js"}
+}

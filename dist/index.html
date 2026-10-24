@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fff1f5">
+  <meta name="description" content="A little collection of lovely desserts. Explore recipes with playful 3D scrolling and beautifully connected transitions.">
+  <title>Dessert Recipes</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="preload" href="/assets/lemon.webp" as="image">
+  <link rel="preload" href="/assets/macarons.webp" as="image">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" class="icon-library" aria-hidden="true">
+    <symbol id="icon-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"/></symbol>
+    <symbol id="icon-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="icon-back" viewBox="0 0 24 24"><path d="m13 6-6 6 6 6M7 12h11"/></symbol>
+    <symbol id="icon-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></symbol>
+    <symbol id="icon-bowl" viewBox="0 0 24 24"><path d="M4 11h16c0 5-3 8-8 8s-8-3-8-8Zm3 10h10M8 3v4m4-5v5m4-4v4"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></symbol>
+    <symbol id="icon-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+  </svg>
+
+  <main class="app" id="app" aria-label="Dessert recipes application">
+    <header class="topbar" id="topbar">
+      <h1 id="page-title">Dessert Recipes</h1>
+      <button class="icon-button favorites-toggle" id="favorites-toggle" aria-label="Show saved recipes" aria-pressed="false"><svg class="icon"><use href="#icon-heart"/></svg></button>
+    </header>
+
+    <section class="feed" id="feed" aria-label="Recipe collection" tabindex="0"><div class="recipe-list" id="recipe-list"></div><p class="empty-state" id="empty-state" hidden>Save a little sweetness.<br><span>Tap the heart on a recipe to keep it here.</span></p><div class="feed-end" aria-hidden="true">made with a little love <span>♡</span></div></section>
+
+    <section class="detail-panel" id="detail-panel" aria-label="Recipe details" hidden>
+      <div class="detail-scroll" id="detail-scroll" tabindex="-1">
+        <div class="hero-space" aria-hidden="true"></div>
+        <article class="detail-content" id="detail-content"></article>
+      </div>
+      <div class="detail-hero" id="detail-hero">
+        <div class="hero-sprinkles" aria-hidden="true"></div>
+        <img id="hero-image" class="hero-image" alt="" width="300" height="300">
+        <button class="round-button back-button" id="back-button" aria-label="Back to recipes"><svg class="icon"><use href="#icon-back"/></svg></button>
+        <button class="round-button save-button" id="save-button" aria-label="Save recipe" aria-pressed="false"><svg class="icon"><use href="#icon-heart"/></svg></button>
+      </div>
+    </section>
+
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <button class="nav-button home-button" id="home-button" aria-label="Home" aria-current="page"><svg class="icon"><use href="#icon-home"/></svg></button>
+      <button class="nav-button add-button" id="add-button" aria-label="Add your own recipe"><svg class="icon"><use href="#icon-plus"/></svg></button>
+    </nav>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </main>
+
+  <dialog id="recipe-dialog" class="recipe-dialog" aria-labelledby="dialog-title">
+    <form id="recipe-form">
+      <div class="dialog-heading"><h2 id="dialog-title">A little something sweet</h2><button type="button" class="icon-button" id="close-dialog" aria-label="Close recipe form"><svg class="icon"><use href="#icon-close"/></svg></button></div>
+      <p>Add a recipe to your own collection.</p>
+      <label>Recipe name<input name="title" maxlength="60" required placeholder="Your favorite dessert"></label>
+      <label>A few words<textarea name="description" maxlength="350" required rows="3" placeholder="What makes it lovely?"></textarea></label>
+      <label>Ingredients <span>one per line</span><textarea name="ingredients" required rows="3" placeholder="200 g flour&#10;100 g sugar"></textarea></label>
+      <label>Method <span>one step per line</span><textarea name="steps" required rows="3" placeholder="Preheat the oven…&#10;Mix the ingredients…"></textarea></label>
+      <div class="form-row"><label>Color<select name="color"><option value="#ffce43">Lemon yellow</option><option value="#48c6df">Macaron blue</option><option value="#ff9fbe">Rose pink</option><option value="#ff7851">Warm coral</option></select></label><label>Picture<select name="image"><option value="lemon">Lemon cheesecake</option><option value="macarons">Macarons</option><option value="cupcakes">Rose cupcakes</option></select></label></div>
+      <button class="submit-recipe" type="submit">Add to my recipes <span>＋</span></button>
+      <small>Your recipe is saved on this device.</small>
+    </form>
+  </dialog>
+  <noscript><p class="noscript">Please enable JavaScript to browse these recipes.</p></noscript>
+</body>
+</html>
